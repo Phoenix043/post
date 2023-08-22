@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Post</h1>
+        
+        <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+               
+        <form [formGroup]="form" (ngSubmit)="submit()">
+         
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input
+                    formControlName="title"
+                    id="title"
+                    type="text"
+                    [(ngModel)]="post.title"
+                    class="form-control">
+                <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['title'].errors && f['title'].errors['required']">Title is required.</div>
+                </div>
+            </div>
+                
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea
+                    formControlName="body"
+                    id="body"
+                    type="text"
+                    [(ngModel)]="post.body"
+                    class="form-control">
+                </textarea>
+                <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
+                </div>
+            </div>
+              
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+        </form>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
